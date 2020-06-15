@@ -23,7 +23,7 @@ class App extends Component {
 
   listarPosts(){
 
-      axios.get('http://localhost:8000/post',{
+      axios.get('https://young-caverns-68509.herokuapp.com/post',{
           mode: 'no-cors'
       })
       .then(response => {
@@ -39,7 +39,7 @@ class App extends Component {
   seedDatabase(e){
 
     e.preventDefault();
-    axios.get('http://localhost:8000/seed_database',{
+    axios.get('https://young-caverns-68509.herokuapp.com/seed_database',{
       mode: 'no-cors'
     })
     .then(response => {
@@ -61,7 +61,7 @@ class App extends Component {
   cleanDatabase(e){
 
     e.preventDefault();
-    axios.get('http://localhost:8000/clean_database')
+    axios.get('https://young-caverns-68509.herokuapp.com/clean_database')
     .then(response => {
  
       this.listarPosts();
@@ -91,7 +91,7 @@ class App extends Component {
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.value) {
-        axios.delete(`http://localhost:8000/post/${post._id}`)
+        axios.delete(`https://young-caverns-68509.herokuapp.com/post/${post._id}`)
         .then(response => {
           console.log("los posts soon: ", response);
           Swal.fire({
@@ -119,12 +119,14 @@ class App extends Component {
   formatCreated(date){
     if(moment(date).format("DD") == moment().format("DD") ){
       
-      return moment(date).format("hh:mm A");;
+      return moment(date).format("hh:mm A");
     
     }else{
       
       if(moment(date).format('DD' == moment().add(-1, 'days'))){
-        return "Yesterday"
+
+        return "Yesterday";
+        
       }
 
       return moment(date).format("MMMM,DD");

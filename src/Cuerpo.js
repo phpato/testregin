@@ -14,7 +14,7 @@ class Cuerpo extends Component {
 
   eliminarPost(){
 
-      axios.delete('http://localhost:3000/post',{
+      axios.delete('https://young-caverns-68509.herokuapp.com/post',{
           mode: 'no-cors'
       })
       .then(response => {
